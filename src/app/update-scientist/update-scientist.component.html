@@ -1,0 +1,29 @@
+<div class="container">
+    <div><h2>Update Scientist :</h2></div>
+    
+    <form >
+    <div hidden class="col-sm-2 col-md-2 col-lg-2">
+        <label >Id Scientist</label>
+        <input readonly type="text" [(ngModel)]="currentScientist.id" name="id" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+        <label >Nom Scientist</label>
+        <input type="text"[(ngModel)]= "currentScientist.name" name="name" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <label >BirthDate Scientist</label>
+        <input type="date" [ngModel]="currentScientist.birthDate | date: 'yyyy-MM-dd'" (ngModelChange)=" currentScientist.birthDate= $event" name="birthDate" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label >DeathDate Scientist</label>
+        <input type="date" [ngModel]="currentScientist.deathDate | date: 'yyyy-MM-dd'" (ngModelChange)=" currentScientist.deathDate= $event" name="deathDate" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Field</label>
+        <select class="form-control form-control-lg" id="idField" name="idField" [(ngModel)]="updatedFieldId">
+            <option *ngFor="let field of fields" [value]="field.id">{{field.name}}</option>
+        </select>
+    </div>
+    <div class="mt-2"><button type="submit" (click)="updateScientist()" class="btn btn-success">Update</button></div>
+    </form>
+</div>

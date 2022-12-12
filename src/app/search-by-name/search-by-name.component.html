@@ -1,0 +1,30 @@
+<div class="container">
+        <form class="form-inline">
+            <label>Search</label>
+            <div class="form-group mx-sm-3 mb-2 mt-2" >
+                <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)" placeholder="start typing names...">
+                <!-- for ng2 <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" placeholder="start typing names...">-->
+                <!-- forpipe <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" placeholder="start typing names..."> -->
+            </div>
+        </form>
+    <div class="card shadow mb-4">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+            <tr> <th>Id</th><th>Name</th> <th>BirthDate</th> <th>DeathDate</th><th>Field</th><th *ngIf="authService.isAdmin()">Delete</th> <th *ngIf="authService.isAdmin()">Update</th></tr>
+            </thead>
+            <tbody *ngFor="let scientist of scientists"> <!--add for ng2 to ngfor "| filter:searchTerm" --> <!--add for pipe to ngfor "| searchFilter: searchTerm" -->
+                <tr>
+                    <td>{{scientist.id}}</td>
+                    <td>{{scientist.name}}</td>
+                    <td>{{scientist.birthDate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{scientist.deathDate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{scientist.field.name}}</td>
+                    <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="deleteScientist(scientist)">Delete</a></td>
+                    <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateScientist',scientist.id]">Update</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <div><h2>Add scientist :</h2></div>
+    <form >
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >Scientist ID</label>
+            <input type="text" [(ngModel)]="newScientist.id" name="idScientist" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4" >
+            <label >Scientist name</label>
+            <input type="text"[(ngModel)]= "newScientist.name" name="name" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Bidth date</label>
+            <input type="date" [(ngModel)]= "newScientist.birthDate" name="deathDate" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Death date</label>
+            <input type="date" [(ngModel)]= "newScientist.deathDate" name="deathDate" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Field</label>
+            <select class="form-control form-control-lg" id="idField" name="idField" [(ngModel)]="newIdField">
+                <option *ngFor="let field of fields" [value]="field.id">{{field.name}}</option>
+            </select>
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addScientist()"class="btn btn-success">Add</button>
+        </div>
+    </form>
+</div>
