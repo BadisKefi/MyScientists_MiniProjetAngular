@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="clo-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Fields</label>
+        <select class="form-control form-control-lg" name="idField" id="idField" [(ngModel)]="IdField" (change)="onchange()">
+            <option *ngFor="let field of fields" value="{{field.id}}">{{field.name}}</option>
+        </select>
+    </div>
+    <div class="card shadow mb-4">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+            <tr> <th>Id</th><th>Name</th> <th>BirthDate</th> <th>DeathDate</th><th>Field</th><th *ngIf="authService.isAdmin()">Delete</th> <th *ngIf="authService.isAdmin()">Update</th></tr>
+            </thead>
+            <tbody *ngFor="let scientist of scientists">
+                <tr>
+                    <td>{{scientist.id}}</td>
+                    <td>{{scientist.name}}</td>
+                    <td>{{scientist.birthDate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{scientist.deathDate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{scientist.field.name}}</td>
+                    <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="deleteScientist(scientist)">Delete</a></td>
+                    <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateScientist',scientist.id]">Update</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>

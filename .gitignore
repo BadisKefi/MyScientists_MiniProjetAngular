@@ -1,0 +1,37 @@
+# Node Modules
+/node_modules
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+
+# Logs
+/logs
+
+# Angular Service Worker
+/ngsw.json
+/service-worker.js
+
+# Yarn
+/yarn-error.log
+
+# Editor-specific files
+.idea
+.vscode
+
+# Dependency directories
+/jspm_packages/
+/node_modules/
+/systemjs/
+/bower_components/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# System Files
+.DS_Store
+Thumbs.db
